@@ -899,12 +899,12 @@ function listProductivityTools(data){
 			"quick_replies":[
 			  {
 				"content_type":"text",
-				"title":"Analytics",
+				"title":list_tools[0],
 				"payload":"Analytics"
 			  },
 			  {
 				"content_type":"text",
-				"title":"Articles",
+				"title":list_tools[1],
 				"payload":"Articles"
 			  }
 			]
