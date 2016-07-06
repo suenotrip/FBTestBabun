@@ -887,26 +887,17 @@ function listProductivityTools(data){
     var page = MAX_PAGE_NO - context.lifespan;
 
 	
-	var text = "Click to check tools for each category";
-		var button1=fb.createButton("Services","devtool");
-		var button2=fb.createButton("Submit a tool","services");
-		var button3=fb.createButton("Find a Tool","tools");
-		var message={
-			"text":text,
-			"quick_replies":[
-			  {
-				"content_type":"text",
-				"title":"Analytics",
-				"payload":"Analytics"
-			  },
-			  {
-				"content_type":"text",
-				"title":"Articles",
-				"payload":"Articles"
-			  }
-			]
-				};
+	return db.getMessagesOfType("productivity_tools").then(function(messages){
+        console.log("===page number",page);
+        var text = "Click to check tools for each category";
+		
+		var message=getquickbuttons(messages,page);
+		
 		return fb.reply(message,senderId);
+    },function(error){
+        console.log("[webhook_post.js]",error);
+    }); 
+	
 	
    /*  return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
@@ -1117,6 +1108,35 @@ function findItemWithPageNumber(array,page){
     }
     return item;
 }
+//------------------------------------------------------------------------------
+function getquickbuttons(array,page){
+    var message;
+	var item;
+    for(var i = 0; i < array.length; i++){
+        if( array[i].page == page){
+            item = array[i].split("\n");
+			
+            break;
+        }
+    }
+	var message={
+			"text":"Click on any button",
+			"quick_replies":[
+			  {
+				"content_type":"text",
+				"title":item[0],
+				"payload":"Analytics"
+			  },
+			  {
+				"content_type":"text",
+				"title":item[1],
+				"payload":"Articles"
+			  }
+			]
+				};
+    return message;
+}
+
 //------------------------------------------------------------------------------
 function randomIndex(array){
     return Math.floor(Math.random()*array.length);
