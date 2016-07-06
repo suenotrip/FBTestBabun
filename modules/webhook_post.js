@@ -891,47 +891,47 @@ function listProductivityTools(data){
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[1],
+				"title":list_tools[1].substr(list_tools[1].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[1].substr(0, list_tools[1].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[2],
+				"title":list_tools[2].substr(list_tools[2].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[2].substr(0, list_tools[2].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[3],
+				"title":list_tools[3].substr(list_tools[3].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[3].substr(0, list_tools[3].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[4],
+				"title":list_tools[4].substr(list_tools[4].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[4].substr(0, list_tools[4].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[5],
+				"title":list_tools[5].substr(list_tools[5].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[5].substr(0, list_tools[5].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[6],
+				"title":list_tools[6].substr(list_tools[6].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[6].substr(0, list_tools[6].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[7],
+				"title":list_tools[7].substr(list_tools[7].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[7].substr(0, list_tools[7].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[8],
+				"title":list_tools[8].substr(list_tools[8].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[8].substr(0, list_tools[8].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
-				"title":list_tools[9],
+				"title":list_tools[9].substr(list_tools[9].indexOf('.')+1),
 				"payload":"prodlist"+list_tools[9].substr(0, list_tools[9].indexOf('.'))
 			  }
 			]
