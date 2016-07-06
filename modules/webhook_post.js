@@ -886,13 +886,13 @@ function listProductivityTools(data){
 			"quick_replies":[
 			  {
 				"content_type":"text",
-				"title":list_tools[0],
+				"title":list_tools[0]+list_tools[0].substr(list_tools[0].indexOf('.'),end),
 				"payload":"prodlist"+list_tools[0].substr(0, list_tools[0].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
 				"title":list_tools[1],
-				"payload":"Articles"
+				"payload":"prodlist"+list_tools[1].substr(0, list_tools[1].indexOf('.'))
 			  }
 			]
 				};
