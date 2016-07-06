@@ -900,7 +900,7 @@ function listProductivityTools(data){
 			  {
 				"content_type":"text",
 				"title":list_tools[0],
-				"payload":"Analytics"
+				"payload":"prodtool"+list_tools[0].substr(0, list_tools[0].indexOf('.')); 
 			  },
 			  {
 				"content_type":"text",
