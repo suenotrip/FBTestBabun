@@ -1115,11 +1115,11 @@ function getquickbuttons(array,page){
     for(var i = 0; i < array.length; i++){
         if( array[i].page == page){
             item = array[i].split("\n");
-			
+			console.log("==item after slpit",item);
             break;
         }
     }
-	var message={
+	message={
 			"text":"Click on any button",
 			"quick_replies":[
 			  {
