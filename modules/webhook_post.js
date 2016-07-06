@@ -887,7 +887,7 @@ function listProductivityTools(data){
     var page = MAX_PAGE_NO - context.lifespan;
 
 	
-	return db.getMessagesOfType("productivity_tools").then(function(messages){
+	/* return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
         var text = "Click to check tools for each category";
 		
@@ -897,9 +897,9 @@ function listProductivityTools(data){
     },function(error){
         console.log("[webhook_post.js]",error);
     }); 
+	 */
 	
-	
-   /*  return db.getMessagesOfType("productivity_tools").then(function(messages){
+    return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
         var message = findItemWithPageNumber(messages,page);
         console.log("===chosen message", message);
@@ -907,7 +907,7 @@ function listProductivityTools(data){
         return fb.reply( fb.textMessage(text), senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
-    }); */
+    });
 }
 //------------------------------------------------------------------------------
 function listMarketingTools(data){
