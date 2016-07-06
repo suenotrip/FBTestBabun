@@ -409,7 +409,36 @@ function handlePostback(payload,senderId){
 		});
 	}
 
+	else if(payload.toString().trim()==="analytics")
+	{
+		var promises = [];
+	     var msg_id="1234";
+		 var text="analytics";
+		 promises.push( nlp(text,senderId,msg_id) );
+		 Q.all(promises).then(function(results){
+			results.forEach(function(result){
+            afterNlp(result);
+        });
+		},function(error){
+			console.log("[webhook_post.js]",error);
+		});
+	}
 
+	else if(payload.toString().trim()==="articles")
+	{
+		var promises = [];
+	     var msg_id="1234";
+		 var text="articles";
+		 promises.push( nlp(text,senderId,msg_id) );
+		 Q.all(promises).then(function(results){
+			results.forEach(function(result){
+            afterNlp(result);
+        });
+		},function(error){
+			console.log("[webhook_post.js]",error);
+		});
+	}
+	
     else if( /excerpt \d+/i.test(payload) ){
         var id = payload.match(/excerpt (\d+)/)[1];
         console.log("===excerpt for",id);
@@ -867,13 +896,13 @@ function listProductivityTools(data){
 			"quick_replies":[
 			  {
 				"content_type":"text",
-				"title":"Red",
-				"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+				"title":"Analytics",
+				"payload":"Analytics"
 			  },
 			  {
 				"content_type":"text",
-				"title":"Green",
-				"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+				"title":"Articles",
+				"payload":"Articles"
 			  }
 			]
 				};
