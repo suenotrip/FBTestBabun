@@ -891,7 +891,9 @@ function listProductivityTools(data){
         console.log("===page number",page);
         var text = "Click to check tools for each category";
 		
-		//var item=getquickbuttons(messages,page);
+		var item=findItemWithPageNumber(messages,page);
+		var list_tools=item.text.split("\n");
+		console.log("==split tools",list_tools);
 		var message={
 			"text":"Click on any button",
 			"quick_replies":[
