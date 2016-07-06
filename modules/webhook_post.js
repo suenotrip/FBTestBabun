@@ -893,6 +893,46 @@ function listProductivityTools(data){
 				"content_type":"text",
 				"title":list_tools[1],
 				"payload":"prodlist"+list_tools[1].substr(0, list_tools[1].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[2],
+				"payload":"prodlist"+list_tools[2].substr(0, list_tools[2].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[3],
+				"payload":"prodlist"+list_tools[3].substr(0, list_tools[3].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[4],
+				"payload":"prodlist"+list_tools[4].substr(0, list_tools[4].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[5],
+				"payload":"prodlist"+list_tools[5].substr(0, list_tools[5].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[6],
+				"payload":"prodlist"+list_tools[6].substr(0, list_tools[6].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[7],
+				"payload":"prodlist"+list_tools[7].substr(0, list_tools[7].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[8],
+				"payload":"prodlist"+list_tools[8].substr(0, list_tools[8].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[9],
+				"payload":"prodlist"+list_tools[9].substr(0, list_tools[9].indexOf('.'))
 			  }
 			]
 				};
