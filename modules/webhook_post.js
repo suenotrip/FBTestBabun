@@ -409,11 +409,11 @@ function handlePostback(payload,senderId){
 		});
 	}
 
-	else if(payload.toString().trim()==="analytics")
+	else if(payload.toString().trim()==="prodlist")
 	{
 		var promises = [];
 	     var msg_id="1234";
-		 var text="analytics";
+		 var text=payload.substr(8,end);
 		 promises.push( nlp(text,senderId,msg_id) );
 		 Q.all(promises).then(function(results){
 			results.forEach(function(result){
@@ -424,20 +424,7 @@ function handlePostback(payload,senderId){
 		});
 	}
 
-	else if(payload.toString().trim()==="articles")
-	{
-		var promises = [];
-	     var msg_id="1234";
-		 var text="articles";
-		 promises.push( nlp(text,senderId,msg_id) );
-		 Q.all(promises).then(function(results){
-			results.forEach(function(result){
-            afterNlp(result);
-        });
-		},function(error){
-			console.log("[webhook_post.js]",error);
-		});
-	}
+	
 	
     else if( /excerpt \d+/i.test(payload) ){
         var id = payload.match(/excerpt (\d+)/)[1];
@@ -900,7 +887,7 @@ function listProductivityTools(data){
 			  {
 				"content_type":"text",
 				"title":list_tools[0],
-				"payload":"prodtool"+list_tools[0].substr(0, list_tools[0].indexOf('.'))
+				"payload":"prodlist"+list_tools[0].substr(0, list_tools[0].indexOf('.'))
 			  },
 			  {
 				"content_type":"text",
