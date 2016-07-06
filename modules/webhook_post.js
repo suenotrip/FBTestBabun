@@ -857,7 +857,29 @@ function listProductivityTools(data){
 	console.log("===context lifespan", context.lifespan);
     var page = MAX_PAGE_NO - context.lifespan;
 
-    return db.getMessagesOfType("productivity_tools").then(function(messages){
+	
+	var text = "Click to check tools for each category";
+		var button1=fb.createButton("Services","devtool");
+		var button2=fb.createButton("Submit a tool","services");
+		var button3=fb.createButton("Find a Tool","tools");
+		var message={
+			"text":text,
+			"quick_replies":[
+			  {
+				"content_type":"text",
+				"title":"Red",
+				"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+			  },
+			  {
+				"content_type":"text",
+				"title":"Green",
+				"payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+			  }
+			]
+				};
+		return fb.reply(message,senderId);
+	
+   /*  return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
         var message = findItemWithPageNumber(messages,page);
         console.log("===chosen message", message);
@@ -865,7 +887,7 @@ function listProductivityTools(data){
         return fb.reply( fb.textMessage(text), senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
-    });
+    }); */
 }
 //------------------------------------------------------------------------------
 function listMarketingTools(data){
