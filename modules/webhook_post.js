@@ -887,19 +887,33 @@ function listProductivityTools(data){
     var page = MAX_PAGE_NO - context.lifespan;
 
 	
-	/* return db.getMessagesOfType("productivity_tools").then(function(messages){
+	return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
         var text = "Click to check tools for each category";
 		
-		var message=getquickbuttons(messages,page);
-		
+		var item=getquickbuttons(messages,page);
+		message={
+			"text":"Click on any button",
+			"quick_replies":[
+			  {
+				"content_type":"text",
+				"title":"Analytics",
+				"payload":"Analytics"
+			  },
+			  {
+				"content_type":"text",
+				"title":"Articles",
+				"payload":"Articles"
+			  }
+			]
+				};
 		return fb.reply(message,senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
     }); 
-	 */
+	 
 	
-    return db.getMessagesOfType("productivity_tools").then(function(messages){
+    /* return db.getMessagesOfType("productivity_tools").then(function(messages){
         console.log("===page number",page);
         var message = findItemWithPageNumber(messages,page);
         console.log("===chosen message", message);
@@ -907,7 +921,7 @@ function listProductivityTools(data){
         return fb.reply( fb.textMessage(text), senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
-    });
+    }); */
 }
 //------------------------------------------------------------------------------
 function listMarketingTools(data){
@@ -1110,7 +1124,7 @@ function findItemWithPageNumber(array,page){
 }
 //------------------------------------------------------------------------------
 function getquickbuttons(array,page){
-    var message;
+    //var message;
 	var item;
     for(var i = 0; i < array.length; i++){
         if( array[i].page == page){
@@ -1119,22 +1133,8 @@ function getquickbuttons(array,page){
             break;
         }
     }
-	message={
-			"text":"Click on any button",
-			"quick_replies":[
-			  {
-				"content_type":"text",
-				"title":"Analytics",
-				"payload":"Analytics"
-			  },
-			  {
-				"content_type":"text",
-				"title":"Articles",
-				"payload":"Articles"
-			  }
-			]
-				};
-    return message;
+	
+    return item;
 }
 
 //------------------------------------------------------------------------------
