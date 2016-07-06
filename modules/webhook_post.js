@@ -1124,12 +1124,12 @@ function getquickbuttons(array,page){
 			"quick_replies":[
 			  {
 				"content_type":"text",
-				"title":item[0],
+				"title":"Analytics",
 				"payload":"Analytics"
 			  },
 			  {
 				"content_type":"text",
-				"title":item[1],
+				"title":"Articles",
 				"payload":"Articles"
 			  }
 			]
