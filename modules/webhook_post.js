@@ -409,7 +409,7 @@ function handlePostback(payload,senderId){
 		});
 	}
 
-	else if(payload.toString().trim()==="prodlist")
+	/* else if(payload.toString().trim()==="prodlist")
 	{
 		var promises = [];
 	     var msg_id="1234";
@@ -423,7 +423,7 @@ function handlePostback(payload,senderId){
 			console.log("[webhook_post.js]",error);
 		});
 	}
-
+ */
 	
 	
     else if( /excerpt \d+/i.test(payload) ){
