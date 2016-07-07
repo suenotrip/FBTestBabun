@@ -962,7 +962,73 @@ function listMarketingTools(data){
     var context = contexts.pop();
     var page = MAX_PAGE_NO - context.lifespan;
 
-    return db.getMessagesOfType("marketing_tools").then(function(messages){
+	return db.getMessagesOfType("marketing_tools").then(function(messages){
+        console.log("===page number",page);
+        var text = "Click to check tools for each category";
+		
+		var item=findItemWithPageNumber(messages,page);
+		var list_tools=item.text.split("\n");
+		console.log("==split tools",list_tools);
+		var message={
+			"text":"Click on any button",
+			"quick_replies":[
+			  {
+				"content_type":"text",
+				"title":list_tools[0].substr(list_tools[0].indexOf('.')+1),
+				"payload":"marklist"+list_tools[0].substr(0, list_tools[0].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[1].substr(list_tools[1].indexOf('.')+1),
+				"payload":"marklist"+list_tools[1].substr(0, list_tools[1].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[2].substr(list_tools[2].indexOf('.')+1),
+				"payload":"marklist"+list_tools[2].substr(0, list_tools[2].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[3].substr(list_tools[3].indexOf('.')+1),
+				"payload":"marklist"+list_tools[3].substr(0, list_tools[3].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[4].substr(list_tools[4].indexOf('.')+1),
+				"payload":"marklist"+list_tools[4].substr(0, list_tools[4].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[5].substr(list_tools[5].indexOf('.')+1),
+				"payload":"marklist"+list_tools[5].substr(0, list_tools[5].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[6].substr(list_tools[6].indexOf('.')+1),
+				"payload":"marklist"+list_tools[6].substr(0, list_tools[6].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[7].substr(list_tools[7].indexOf('.')+1),
+				"payload":"marklist"+list_tools[7].substr(0, list_tools[7].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[8].substr(list_tools[8].indexOf('.')+1),
+				"payload":"marklist"+list_tools[8].substr(0, list_tools[8].indexOf('.'))
+			  },
+			  {
+				"content_type":"text",
+				"title":list_tools[9].substr(list_tools[9].indexOf('.')+1),
+				"payload":"marklist"+list_tools[9].substr(0, list_tools[9].indexOf('.'))
+			  }
+			]
+				};
+		return fb.reply(message,senderId);
+    },function(error){
+        console.log("[webhook_post.js]",error);
+    }); 
+    /* return db.getMessagesOfType("marketing_tools").then(function(messages){
         console.log("===page number",page);
         var message = findItemWithPageNumber(messages,page);
         console.log("===chosen message", message);
@@ -970,7 +1036,7 @@ function listMarketingTools(data){
         return fb.reply( fb.textMessage(text), senderId);
     },function(error){
         console.log("[webhook_post.js]",error);
-    });
+    }); */
 }
 //------------------------------------------------------------------------------
 function recommendProductivityTools(data){
