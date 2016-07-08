@@ -879,7 +879,7 @@ function listProductivityTools(data){
         var text = "Click on a category to find tools. Type 'more' for more categories";
 		
 		var item=findItemWithPageNumber(messages,page);
-		if(page==5)
+		if(page==3)
 		{
 			text="That will be all. Click on a category to find tools.";
 		}
