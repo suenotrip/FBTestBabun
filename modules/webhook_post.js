@@ -8,21 +8,21 @@ var nlp = require("./nlp");
 var _ = require("underscore");
 var http = require('http');
 var request = require('request');
-
+var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
 //------------------------------------------------------------------------------
 module.exports = function(req,res,next){
     // Tell FB that we have received the request by ending it.
     // Without this, the request will timeout and FB will resend it
     // causing you to accidentally spam the user.
 
-
+	
 	var action=req.body.action || "facebook";
 	console.log("==letsclap params",action);
 	 res.end();
 if(action=='facebook')
 {
 	console.log("===Received a message from FB");
-
+	dashbot.logIncoming(req.body);
 
     // get all the entries
     var entries = req.body.entry;
