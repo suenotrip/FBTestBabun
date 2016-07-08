@@ -964,13 +964,17 @@ function listMarketingTools(data){
 
 	return db.getMessagesOfType("marketing_tools").then(function(messages){
         console.log("===page number",page);
-        var text = "Click to check tools for each category";
+        var text = "Click on a category to find tools. Type 'more' for more categories";
 		
 		var item=findItemWithPageNumber(messages,page);
+		if(page===5)
+		{
+			text="That will be all. Click on a category to find tools.";
+		}
 		var list_tools=item.text.split("\n");
 		console.log("==split tools",list_tools);
 		var message={
-			"text":"Click on any button",
+			"text":"",
 			"quick_replies":[
 			  {
 				"content_type":"text",
