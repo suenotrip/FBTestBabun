@@ -56,7 +56,7 @@ if(action=='facebook')
                    // NLP!
                    console.log("===user sent text");
                    promises.push( nlp(text,senderId,msg_id) );
-				   notifyincoming(message,senderId);
+				   promises.push(notifyincoming(message,senderId));
                }
            }else if(isPostback){
                console.log("===user sent postback");
