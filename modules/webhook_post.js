@@ -808,7 +808,7 @@ function hello(data){
     return db.getMessagesOfType("hello").then(function(messages){
         var message = oneOf(messages);
         var text = message.text;
-		var button1=fb.createButton("Productivity/Marketing tools","productivity tool");
+		var button1=fb.createButton("Find a Tool","tools");
 		var button2=fb.createButton("Service providers","services");
 		
 		var button3=fb.createButton("Submit your product","devtool");
