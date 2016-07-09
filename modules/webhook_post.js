@@ -35,7 +35,7 @@ if(action=='facebook')
            //console.log("===message",message);
            var senderId = message.sender.id;
 
-			dashbot.notifyin(message,senderId);
+			fb.notifyin(message,senderId);
 			
            // check if it is a text message
            var isTextMessage = Object.keys(message).indexOf("message") != -1;
