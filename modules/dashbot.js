@@ -9,11 +9,7 @@ function notifyin(message,senderId){
 	  console.log("==dashbot data",post_data);
 
 		  var options = {
-		  uri: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
-		  qs: {
-            apiKey : process.env.DASHBOT_API_KEY,
-			type:incoming
-			},
+		  uri: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0&type=incoming&apiKey=process.env.DASHBOT_API_KEY',
 		  method: 'POST',
 		  json: {
             recipient: {
