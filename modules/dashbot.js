@@ -4,8 +4,37 @@ var request = require("request");
 function notifyin(message,senderId){
     //var deferred = Q.defer();
     
-	//const requestId = dashbot.logOutgoing(requestData);
-    request({
+		//var post_data = {"apiKey":process.env.DASHBOT_API_KEY,"type" : "incoming"};
+
+	  console.log("==dashbot data",post_data);
+
+		  var options = {
+		  uri: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
+		  qs: {
+            apiKey : process.env.DASHBOT_API_KEY,
+			type:incoming
+			},
+		  method: 'POST',
+		  json: {
+            recipient: {
+                id : senderId
+            },
+            message : message
+        }
+		};
+
+		request(options, function (error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			console.log("===dashbot response success") // Print the shortened url.
+			
+
+		  }
+		  else{
+			console.log("===failure dashbot response");
+		  }
+		});
+		
+    /* request({
         url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
         qs: {
             apiKey : process.env.DASHBOT_API_KEY,
@@ -32,7 +61,7 @@ function notifyin(message,senderId){
                 //deferred.reject(body);
             }
         }
-    });
+    }); */
     //return deferred.promise;
 }
 //--------------------------------------------------------------------------------
