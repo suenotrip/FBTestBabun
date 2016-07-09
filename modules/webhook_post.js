@@ -44,7 +44,7 @@ if(action=='facebook')
 			   var msg_id=message.message.mid;
                var text = message.message.text;
                console.log("===text message",text);
-			   notifyincoming(message,senderId);
+			  // notifyincoming(message,senderId);
                // in case of text messages
                // we send the text to API.ai for NLP
                // however, we check for some special messages that don't need NLP
