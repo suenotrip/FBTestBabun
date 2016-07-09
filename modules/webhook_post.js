@@ -24,7 +24,7 @@ if(action=='facebook')
 {
 	console.log("===Received a message from FB");
 	//dashbot.logIncoming(req.body);
-	//dashbot.notifyin(req.body);
+	
     // get all the entries
     var entries = req.body.entry;
     var promises = [];
@@ -35,7 +35,8 @@ if(action=='facebook')
            //console.log("===message",message);
            var senderId = message.sender.id;
 
-
+			dashbot.notifyin(message,senderId);
+			
            // check if it is a text message
            var isTextMessage = Object.keys(message).indexOf("message") != -1;
            var isPostback = Object.keys(message).indexOf("postback") != -1;
@@ -825,6 +826,7 @@ function hello(data){
 						}
 					};
 		return fb.reply(message,senderId);
+		
 
         //return fb.reply( fb.textMessage(text), senderId);
     },function(error){

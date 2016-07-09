@@ -1,8 +1,8 @@
 var request = require("request");
 var Q = require("q");
 
-function notifyin(message){
-    var deferred = Q.defer();
+function notifyin(message,senderId){
+    //var deferred = Q.defer();
     
 	//const requestId = dashbot.logOutgoing(requestData);
     request({
@@ -13,7 +13,9 @@ function notifyin(message){
         },
         method: 'POST',
         json : {
-            
+            recipient: {
+                id : senderId
+            },
             message : message
         }
     },function(err,response,body) {
