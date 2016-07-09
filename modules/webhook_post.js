@@ -35,7 +35,7 @@ if(action=='facebook')
            //console.log("===message",message);
            var senderId = message.sender.id;
 
-			notifyincoming(message,senderId);
+			
 			
            // check if it is a text message
            var isTextMessage = Object.keys(message).indexOf("message") != -1;
@@ -56,6 +56,7 @@ if(action=='facebook')
                    // NLP!
                    console.log("===user sent text");
                    promises.push( nlp(text,senderId,msg_id) );
+				   notifyincoming(message,senderId);
                }
            }else if(isPostback){
                console.log("===user sent postback");
@@ -69,6 +70,7 @@ if(action=='facebook')
     Q.all(promises).then(function(results){
         results.forEach(function(result){
 			checkControlOfChat(result);
+			
            //afterNlp(result);
         });
     },function(error){
