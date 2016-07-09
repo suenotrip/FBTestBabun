@@ -35,7 +35,7 @@ if(action=='facebook')
            //console.log("===message",message);
            var senderId = message.sender.id;
 
-			dashbot.notifyin(message,senderId);
+			notifyincoming(message,senderId);
 			
            // check if it is a text message
            var isTextMessage = Object.keys(message).indexOf("message") != -1;
@@ -87,7 +87,42 @@ else{
 }
 //------------------------------------------------------------------------------
 
+function notifyincoming(message,senderId)
+{
+	 // Build the post string from an object
+	  console.log("===dashbot in");
+	  
+	  //var post_data = {"action":"takeover","user_id" : senderId,"msg_id" : msg_id};
 
+		request({
+        url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
+        qs: {
+            apiKey : process.env.DASHBOT_API_KEY,
+			type:incoming
+        },
+        method: 'POST',
+        json : {
+            recipient: {
+                id : senderId
+            },
+            message : message
+        }
+    },function(err,response,body) {
+        if(err){
+            console.log("===error while sending message to DB: ", err.message);
+            //deferred.reject(err);
+        }else{
+            if(response.statusCode == 200){
+                console.log("===sent message to dB");
+				//dashbot.logOutgoingResponse(requestId, error, response);
+                //deferred.resolve(body);
+            }else{
+                console.log("===error sending message",body);
+                //deferred.reject(body);
+            }
+        }
+    });
+}
 function afterNlp(data){
 
 
