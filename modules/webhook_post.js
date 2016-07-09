@@ -808,10 +808,11 @@ function hello(data){
     return db.getMessagesOfType("hello").then(function(messages){
         var message = oneOf(messages);
         var text = message.text;
-
-		var button1=fb.createButton("Services","devtool");
-		var button2=fb.createButton("Submit a tool","services");
-		var button3=fb.createButton("Find a Tool","tools");
+		var button1=fb.createButton("Productivity Tools","productivity tool");
+		var button2=fb.createButton("Marketig Tools","Marketing tool");
+		var button3=fb.createButton("Find service providers","services");
+		var button4=fb.createButton("Submit your product","devtool");
+		//var button3=fb.createButton("Find a Tool","tools");
 		var message={
 			"attachment":{
 				"type":"template",
