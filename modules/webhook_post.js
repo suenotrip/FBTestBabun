@@ -24,7 +24,7 @@ if(action=='facebook')
 {
 	console.log("===Received a message from FB");
 	//dashbot.logIncoming(req.body);
-	dashbot.notifyin(req.body);
+	//dashbot.notifyin(req.body);
     // get all the entries
     var entries = req.body.entry;
     var promises = [];
