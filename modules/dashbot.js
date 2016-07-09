@@ -1,5 +1,5 @@
 var request = require("request");
-var Q = require("q");
+//var Q = require("q");
 
 function notifyin(message,senderId){
     //var deferred = Q.defer();
@@ -21,23 +21,23 @@ function notifyin(message,senderId){
     },function(err,response,body) {
         if(err){
             console.log("===error while sending message to FB: ", err.message);
-            deferred.reject(err);
+            //deferred.reject(err);
         }else{
             if(response.statusCode == 200){
                 console.log("===sent message to FB");
 				//dashbot.logOutgoingResponse(requestId, error, response);
-                deferred.resolve(body);
+                //deferred.resolve(body);
             }else{
                 console.log("===error sending message",body);
-                deferred.reject(body);
+                //deferred.reject(body);
             }
         }
     });
-    return deferred.promise;
+    //return deferred.promise;
 }
 //--------------------------------------------------------------------------------
 function notifyout(message,senderId){
-    var deferred = Q.defer();
+    //var deferred = Q.defer();
     console.log("===sending message to: ",senderId);
 	//const requestId = dashbot.logOutgoing(requestData);
     request({
@@ -56,19 +56,19 @@ function notifyout(message,senderId){
     },function(err,response,body) {
         if(err){
             console.log("===error while sending message to FB: ", err.message);
-            deferred.reject(err);
+            //deferred.reject(err);
         }else{
             if(response.statusCode == 200){
                 console.log("===sent message to FB");
 				//dashbot.logOutgoingResponse(requestId, error, response);
-                deferred.resolve(body);
+                //deferred.resolve(body);
             }else{
                 console.log("===error sending message",body);
-                deferred.reject(body);
+                //deferred.reject(body);
             }
         }
     });
-    return deferred.promise;
+    //return deferred.promise;
 }
 //--------------------------------------------------------------------------------
 
