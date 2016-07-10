@@ -44,7 +44,7 @@ if(action=='facebook')
 			   var msg_id=message.message.mid;
                var text = message.message.text;
                console.log("===text message",text);
-			  // notifyincoming(message,senderId);
+	notifyincoming(message,senderId);
                // in case of text messages
                // we send the text to API.ai for NLP
                // however, we check for some special messages that don't need NLP
@@ -95,14 +95,8 @@ function notifyincoming(message,senderId)
 	 // Build the post string from an object
 	  console.log("===dashbot in");
 	  
-	  //var post_data = {"action":"takeover","user_id" : senderId,"msg_id" : msg_id};
-
 		request({
-        url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
-        qs: {
-            apiKey : process.env.DASHBOT_API_KEY,
-			type:incoming
-        },
+        url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0&type=incoming&apiKey=v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2',
         method: 'POST',
         json : {
             recipient: {
