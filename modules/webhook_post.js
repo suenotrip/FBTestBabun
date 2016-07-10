@@ -113,12 +113,18 @@ function notifyincoming(message,senderId)
 		  }
 		  else{
 			console.log("===dashbot response failure",body);
-			console.log("===dashbot response error",error);
-			console.log("===dashbot response response",response);
+			//console.log("===dashbot response error",error);
+			//console.log("===dashbot response response",response);
 		  }
 		});
-		/* request({
-        url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0&type=incoming&apiKey=v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2',
+}
+
+function notifyout(message,senderId)
+{
+	 // Build the post string from an object
+	  console.log("===dashbot out");
+	   var options = {
+		uri: 'https://tracker.dashbot.io/track?platform=facebook&v=0.6.0&type=outgoing&apiKey=v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2',
         method: 'POST',
         json : {
             recipient: {
@@ -126,22 +132,22 @@ function notifyincoming(message,senderId)
             },
             message : message
         }
-    },function(err,response,body) {
-        if(err){
-            console.log("===error while sending message to DB: ", err.message);
-            //deferred.reject(err);
-        }else{
-            if(response.statusCode == 200){
-                console.log("===sent message to dB");
-				//dashbot.logOutgoingResponse(requestId, error, response);
-                //deferred.resolve(body);
-            }else{
-                console.log("===error sending message",body);
-                //deferred.reject(body);
-            }
-        }
-    }); */
+		};
+
+		request(options, function (error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			console.log("===dashbot response success") // Print the shortened url.
+			
+
+		  }
+		  else{
+			console.log("===dashbot response failure",body);
+			//console.log("===dashbot response error",error);
+			//console.log("===dashbot response response",response);
+		  }
+		});
 }
+
 function afterNlp(data){
 
 
@@ -879,6 +885,8 @@ function hello(data){
 							}
 						}
 					};
+					
+		notifyout(message,senderId);
 		return fb.reply(message,senderId);
 		
 
