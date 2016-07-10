@@ -94,8 +94,28 @@ function notifyincoming(message,senderId)
 {
 	 // Build the post string from an object
 	  console.log("===dashbot in");
-	  
-		request({
+	   var options = {
+		uri: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0&type=incoming&apiKey=v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2',
+        method: 'POST',
+        json : {
+            recipient: {
+                id : senderId
+            },
+            message : message
+        }
+		};
+
+		request(options, function (error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			console.log("===dashbot response success") // Print the shortened url.
+			//console.log("===letscla response ",response);
+
+		  }
+		  else{
+			console.log("===dashbot response failure");
+		  }
+		});
+		/* request({
         url: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0&type=incoming&apiKey=v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2',
         method: 'POST',
         json : {
@@ -118,7 +138,7 @@ function notifyincoming(message,senderId)
                 //deferred.reject(body);
             }
         }
-    });
+    }); */
 }
 function afterNlp(data){
 
