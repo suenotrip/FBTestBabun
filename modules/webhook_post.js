@@ -108,11 +108,13 @@ function notifyincoming(message,senderId)
 		request(options, function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 			console.log("===dashbot response success") // Print the shortened url.
-			//console.log("===letscla response ",response);
+			
 
 		  }
 		  else{
-			console.log("===dashbot response failure");
+			console.log("===dashbot response failure",body);
+			console.log("===dashbot response error",error);
+			console.log("===dashbot response response",response);
 		  }
 		});
 		/* request({
