@@ -8,8 +8,8 @@ var nlp = require("./nlp");
 var _ = require("underscore");
 var http = require('http');
 var request = require('request');
-var dashbot=require("./dashbot");
-//var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
+//var dashbot=require("./dashbot");
+var dashbot = require('dashbot')(v32QmG1446nC9QpYWV13hbgrd8F2HEQTc3sivlw2).facebook;
 //------------------------------------------------------------------------------
 module.exports = function(req,res,next){
     // Tell FB that we have received the request by ending it.
