@@ -57,6 +57,16 @@ function reply(message,senderId){
     var deferred = Q.defer();
     console.log("===sending message to: ",senderId);
 	//const requestId = dashbot.logOutgoing(requestData);
+	const requestData = {
+	  url: 'https://graph.facebook.com/v2.6/me/messages',
+	  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+	  method: 'POST',
+	  json: {
+		recipient: {id: senderId},
+		message: message
+	  }
+	};
+	const requestId = dashbot.logOutgoing(requestData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -76,7 +86,7 @@ function reply(message,senderId){
         }else{
             if(response.statusCode == 200){
                 console.log("===sent message to FB");
-				//dashbot.logOutgoingResponse(requestId, error, response);
+				 dashbot.logOutgoingResponse(requestId, err, response);
                 deferred.resolve(body);
             }else{
                 console.log("===error sending message",body);
