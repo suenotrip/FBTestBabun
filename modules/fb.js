@@ -1,5 +1,6 @@
 var request = require("request");
 var Q = require("q");
+var dashbot = require('dashbot')(process.env.DASHBOT_API_KEY).facebook;
 //--------------------------------------------------------------------------------
 function textMessage(message){
     return {
@@ -86,38 +87,21 @@ function reply(message,senderId){
     return deferred.promise;
 }
 
-function notifyin(message,senderId){
-    //var deferred = Q.defer();
-    
-		//var post_data = {"apiKey":process.env.DASHBOT_API_KEY,"type" : "incoming"};
-
-	  console.log("==dashbot data",post_data);
-
-		  var options = {
-		  uri: 'https://tracker.dashbot.io/platform=facebook&v=0.6.0',
-		  qs: {
-            apiKey : process.env.DASHBOT_API_KEY,
-			type:incoming
-			},
-		  method: 'POST',
-		  json: {
-            recipient: {
-                id : senderId
-            },
-            message : message
-        }
-		};
-
-		request(options, function (error, response, body) {
-		  if (!error && response.statusCode == 200) {
-			console.log("===dashbot response success") // Print the shortened url.
-			
-
-		  }
-		  else{
-			console.log("===failure dashbot response");
-		  }
-		});
+function notifyout(message,senderId){
+   
+	const requestData = {
+	  url: 'https://graph.facebook.com/v2.6/me/messages',
+	  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+	  method: 'POST',
+	  json: {
+		recipient: {id: senderId},
+		message: message
+	  }
+	};
+	const requestId = dashbot.logOutgoing(requestData);
+	request(requestData, function(error, response, body) {
+	  dashbot.logOutgoingResponse(requestId, error, response);
+	});
 	
 }
 //--------------------------------------------------------------------------------
@@ -127,4 +111,4 @@ exports.imageMessage = imageMessage;
 exports.createElement = createElement;
 exports.createButton = createButton;
 exports.reply = reply;
-exports.notifyin=notifyin;
+exports.notifyout=notifyout;

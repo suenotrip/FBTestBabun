@@ -886,7 +886,7 @@ function hello(data){
 						}
 					};
 					
-		//notifyout(message,senderId);
+		fb.notifyout(message,senderId);
 		return fb.reply(message,senderId);
 		
 
