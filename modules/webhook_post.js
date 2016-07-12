@@ -23,7 +23,7 @@ module.exports = function(req,res,next){
 if(action=='facebook')
 {
 	console.log("===Received a message from FB");
-	//dashbot.logIncoming(req.body);
+	dashbot.logIncoming(req.body);
 	
     // get all the entries
     var entries = req.body.entry;
@@ -44,7 +44,7 @@ if(action=='facebook')
 			   var msg_id=message.message.mid;
                var text = message.message.text;
                console.log("===text message",text);
-	notifyincoming(message,senderId);
+	//notifyincoming(message,senderId);
                // in case of text messages
                // we send the text to API.ai for NLP
                // however, we check for some special messages that don't need NLP
@@ -886,7 +886,7 @@ function hello(data){
 						}
 					};
 					
-		notifyout(message,senderId);
+		//notifyout(message,senderId);
 		return fb.reply(message,senderId);
 		
 
