@@ -532,7 +532,7 @@ function PlayVideo(data){
 			"attachment":{
 			"type":"video",
 			"payload":{
-			"url":"https://www.youtube.com/watch?v=fRh_vgS2dFE"
+			"url":"https://petersapparel.com/bin/clip.mp4"
 					  }
 					}
 				};
