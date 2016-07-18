@@ -527,8 +527,8 @@ function handlePostback(payload,senderId){
 function PlayVideo(data){
 	var senderId = data.sessionId;
    
-        //var text = "Videos";
-		var message={
+   return db.getMessagesOfType("about").then(function(messages){
+        var message={
 			"attachment":{
 			"type":"video",
 			"payload":{
@@ -537,6 +537,11 @@ function PlayVideo(data){
 					}
 				};
 			return fb.reply(message,senderId);
+    },function(error){
+        console.log("[webhook_post.js]",error);
+    });
+        //var text = "Videos";
+		
 }
 
 
