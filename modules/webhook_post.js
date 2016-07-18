@@ -156,6 +156,9 @@ function afterNlp(data){
     console.log("===action",action);
     if( data.result.source == "agent" ){
         switch( action ){
+			case "agent.play.video":
+                PlayVideo(data);
+                break;
 			case "agent.exitto.letsclap":
                 PostCode(data);
                 break;
@@ -370,7 +373,22 @@ function handlePostback(payload,senderId){
     console.log("===postback",payload);
     console.log("===senderId",senderId);
 
-	if(payload.toString().trim()==="devtool")
+	if(payload.toString().trim()==="hello")
+	{
+		var promises = [];
+	     var msg_id="1234";
+		 var text="hello";
+		 promises.push( nlp(text,senderId,msg_id) );
+		 Q.all(promises).then(function(results){
+			results.forEach(function(result){
+            afterNlp(result);
+        });
+		},function(error){
+			console.log("[webhook_post.js]",error);
+		});
+	}
+	
+	else if(payload.toString().trim()==="devtool")
 	{
 		var promises = [];
 	     var msg_id="1234";
@@ -505,6 +523,24 @@ function handlePostback(payload,senderId){
     }
 }
 //------------------------------------------------------------------------------
+
+function PlayVideo(data){
+	var senderId = data.sessionId;
+   
+        //var text = "Videos";
+		var message={
+			"attachment":{
+			"type":"video",
+			"payload":{
+			"url":"https://www.youtube.com/watch?v=fRh_vgS2dFE"
+					  }
+					}
+				};
+			return fb.reply(message,senderId);
+}
+
+
+
 function about(data){
     var senderId = data.sessionId;
     return db.getMessagesOfType("about").then(function(messages){
