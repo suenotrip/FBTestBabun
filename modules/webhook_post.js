@@ -532,7 +532,7 @@ function PlayVideo(data){
 			"attachment":{
 			"type":"video",
 			"payload":{
-			"url":"https://www.youtube.com/watch?v=EZh7my_RASk"
+			"url":"http://www.courses.restokitch.com/wp-content/uploads/2016/07/2mb-video.mp4"
 					  }
 					}
 				};
