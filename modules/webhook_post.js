@@ -19,7 +19,7 @@ module.exports = function(req,res,next){
 	
 	//var action=req.body.action || "facebook";
 	var paused=req.body.paused || "facebook";
-	console.log("==dashbot params",action);
+	console.log("==dashbot params",paused);
 	 res.end();
 if(paused=='facebook')
 {
