@@ -17,11 +17,10 @@ module.exports = function(req,res,next){
     // causing you to accidentally spam the user.
 
 	
-	//var action=req.body.action || "facebook";
-	var paused=req.body.paused || "facebook";
+	var action=req.body.action || "facebook";
 	console.log("==letsclap params",action);
 	 res.end();
-if(paused=='facebook')
+if(action=='facebook')
 {
 	console.log("===Received a message from FB");
 	dashbot.logIncoming(req.body);
@@ -82,18 +81,11 @@ if(paused=='facebook')
 
 }
 else{
-	console.log("===Received a message from dashbot");
-	var senderId=req.body.userId;
-	console.log("===dashbot user_id=",senderId);
-	if(paused=='true')
-	{
-		updateUserStatus(senderId,0);
-	}
-	else{
+	console.log("===Received a message from letsclap");
+	var senderId=req.body.user_id;
+	console.log("===letsclap user_id=",senderId);
 	updateUserStatus(senderId,1);
-	}
-	
-	//return fb.reply(fb.textMessage("So you are back with Babun Bot. Say HELLO to get started."),senderId);
+	return fb.reply(fb.textMessage("So you are back with Babun Bot. Say HELLO to get started."),senderId);
 }	
 }
 //------------------------------------------------------------------------------
@@ -335,7 +327,7 @@ function checkControlOfChat(data){
 	return db.getBotUser(data.sessionId).then(function(rows){
 		if (rows.length>0)
 		{
-		  if(rows[0].is_botactive==0){console.log("===control lies with dashbot");}
+		  if(rows[0].is_botactive==0){console.log("===control lies with letsclap");}
 
 		  else{
 			console.log("===control lies with bot");
