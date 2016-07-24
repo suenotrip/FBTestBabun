@@ -21,7 +21,7 @@ module.exports = function(req,res,next){
 	var paused=req.body.paused || "facebook";
 	console.log("==dashbot params",paused);
 	 res.end();
-if(action=='facebook')
+if(paused=='facebook')
 {
 	console.log("===Received a message from FB");
 	dashbot.logIncoming(req.body);
